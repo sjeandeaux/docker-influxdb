@@ -35,7 +35,7 @@ This command starts a container with a configuration outside (we can use https, 
 make -f MakefileTest run
 
 docker run -d --name runInfluxdb -p 8083:8083 -p 8086:8086 \
-           -e CONFIG#/influxdb/overwrite/influxdbtoml \
+           -e CONFIG=/influxdb/overwrite/influxdb.toml \
            -v $(pwd)/data:/opt/influxdb/shared/data \
            -v $(pwd)/test/overwrite:/influxdb/overwrite \
            sjeandeaux/docker-influxdb
