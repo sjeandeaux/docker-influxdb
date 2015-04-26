@@ -1,0 +1,19 @@
+include commun.mk
+
+sendValue = echo "local.grafana.devil $1 `date +%s`" | nc $(host) 2003
+
+send:
+	$(call sendValue,666)
+	$(call sendValue,555)
+	$(call sendValue,655)
+	$(call sendValue,755)
+	$(call sendValue,555)
+
+create-db-graphite:
+	curl -X POST "$(host):8086/db?u=root&p=root" --data '{"name": "graphite"}' --noproxy $(host) -v
+
+create-user-graphite:
+	curl -X POST "$(host):8086/db/graphite/users?u=root&p=root" --data '{"name": "graphite", "password": "graphite"}' --noproxy $(host) -v
+
+run:
+	docker run -d --name $(littleName) $(publish)  -e CONFIG=/influxdb/overwrite/influxdb.toml -v $(current_dir)/test/overwrite:/influxdb/overwrite  $(tag)
