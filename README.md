@@ -8,7 +8,7 @@ make build
 docker build -t sjeandeaux/docker-influxdb 
 ```
 
-TIP: with https://gistgithubcom/sjeandeaux/b752e3d593ad6cdb2485 
+TIP: with [proxy](https://gistgithubcom/sjeandeaux/b752e3d593ad6cdb2485) 
  (docker build -t sjeandeaux/docker-influxdb -f docker-proxy-file )
 
 ## Run influxdb
@@ -53,4 +53,4 @@ make -f MakefileTest send
 
 ### FROM sjeandeaux/docker-influxdb
 
-https://githubcom/sjeandeaux/docker-influxdb-graphite
+[see](https://githubcom/sjeandeaux/docker-influxdb-graphite)
